@@ -11,6 +11,7 @@ export default {
     }
   },
   render (_, { props, children, parent, data }) {
+    debugger
     // used by devtools to display a router-view badge
     data.routerView = true
 

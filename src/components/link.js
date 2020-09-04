@@ -37,6 +37,18 @@ export default {
     }
   },
   render (h: Function) {
+    // debugger
+    /*
+      router-link原理
+      1：to参数可以传string或者对象， 
+         tag参数，默认是a，可以指定其他的元素标签, 传其他元素也能做到跳转
+         event是string或者数组，表示可以通过哪一种事件触发跳转的时间，默认是click事件，当然可以添加任何事件，来触发
+         repalce是布尔值，表示导航后是否会留下 history 记录。
+      2：router-link组件的跳转使用js来控制的，默认的跳转事件已经被阻止了
+      3： 在执行render函数中，router-link里面的子元素都会保存在this.$slots.default，里面h函数就是createElement函数
+      接受参数是： tag， data, children三个参数，这时候router-link就有了渲染子元素的能力了
+      4： 
+    */
     const router = this.$router
     const current = this.$route
     const { location, route, href } = router.resolve(
@@ -74,6 +86,7 @@ export default {
     const ariaCurrentValue = classes[exactActiveClass] ? this.ariaCurrentValue : null
 
     const handler = e => {
+      // debugger
       if (guardEvent(e)) {
         if (this.replace) {
           router.replace(location, noop)
@@ -106,6 +119,7 @@ export default {
       })
 
     if (scopedSlot) {
+      // debugger
       if (scopedSlot.length === 1) {
         return scopedSlot[0]
       } else if (scopedSlot.length > 1 || !scopedSlot.length) {
@@ -120,7 +134,7 @@ export default {
         return scopedSlot.length === 0 ? h() : h('span', {}, scopedSlot)
       }
     }
-
+    // debugger
     if (this.tag === 'a') {
       data.on = on
       data.attrs = { href, 'aria-current': ariaCurrentValue }
@@ -163,6 +177,7 @@ export default {
 }
 
 function guardEvent (e) {
+  // debugger
   // don't redirect with control keys
   if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) return
   // don't redirect when preventDefault called

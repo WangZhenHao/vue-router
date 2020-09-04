@@ -4,6 +4,17 @@ import Link from './components/link'
 export let _Vue
 
 export function install (Vue) {
+  /**
+    Vue.use(vueRouter) 执行流程
+    
+    1： 先添加一个混合函数beforeCreate, 在生命周期beoreCreate执行，如果是第一次执行，就会对_router进行赋值
+    1-1： _router就是new VueRouter({.....})的实例
+    
+
+
+
+  */
+
   if (install.installed && _Vue === Vue) return
   install.installed = true
 
@@ -24,6 +35,7 @@ export function install (Vue) {
         this._routerRoot = this
         this._router = this.$options.router
         this._router.init(this)
+
         Vue.util.defineReactive(this, '_route', this._router.history.current)
       } else {
         this._routerRoot = (this.$parent && this.$parent._routerRoot) || this

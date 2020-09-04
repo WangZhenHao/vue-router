@@ -56,9 +56,10 @@ const vueInstance = new Vue({
   data: () => ({ n: 0 }),
   template: `
     <div id="app">
+      <router-link tag="div" to="/foo">myFoo</router-link>
       <h1>Basic</h1>
       <ul>
-        <li><router-link to="/">/</router-link></li>
+        <li><router-link to="/" target="_blank">/</router-link></li>
         <li><router-link to="/foo">/foo</router-link></li>
         <li><router-link to="/bar">/bar</router-link></li>
         <router-link tag="li" to="/bar" :event="['mousedown', 'touchstart']">
@@ -69,7 +70,7 @@ const vueInstance = new Vue({
         <li><router-link to="/é#%25ñ">/é#%25ñ</router-link></li>
         <router-link to="/foo" v-slot="props">
           <li :class="[props.isActive && 'active', props.isExactActive && 'exact-active']">
-            <a :href="props.href" @click="props.navigate">{{ props.route.path }} (with v-slot).</a>
+            <a :href="props.href" @click="props.navigate">{{ props.route.path }} (with v-slot).1111111111111</a>
           </li>
         </router-link>
         <li><router-link to="/foo" replace>/foo (replace)</router-link></li>
@@ -78,6 +79,8 @@ const vueInstance = new Vue({
       <pre id="counter">{{ n }}</pre>
       <pre id="query-t">{{ $route.query.t }}</pre>
       <pre id="hash">{{ $route.hash }}</pre>
+      <router-view class="view"></router-view>
+      <hr />
       <router-view class="view"></router-view>
     </div>
   `,
