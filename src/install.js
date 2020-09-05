@@ -9,10 +9,16 @@ export function install (Vue) {
     
     1： 先添加一个混合函数beforeCreate, 在生命周期beoreCreate执行，如果是第一次执行，就会对_router进行赋值
     1-1： _router就是new VueRouter({.....})的实例
+    1-2: 为_route定义响应式属性，值为this._router.history.current
+    1-3: 执行registerInstance方法，为什么执行这个方法有点不太懂
+
+    2： 添加destroyed生命周期，该生命周期也是执行registerInstance
+
+    3: 为Vue.prototype添加一个$router属性，该值只会返回this._routerRoot._router
+    3-1： 为Vue.prototype添加一个.$route属性，该值只会返回this._routerRoot._route
     
-
-
-
+    4: 分别添加全局组件router-view, router-link
+    
   */
 
   if (install.installed && _Vue === Vue) return

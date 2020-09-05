@@ -1,6 +1,24 @@
 import { warn } from '../util/warn'
 import { extend } from '../util/misc'
 
+/*
+  router-view组件执行流程
+  1： h的值是$createElment
+  1-1： route的值$route, $route也就是this._routerRoot._route
+  
+
+  2： 拿到match的值，match其实就是当前路由匹配到的组件{ path: '/', component: xxx, meta: {...} }
+  3:  拿到componet的值， 它的值就是我们定义好的组件
+  
+  最值执行 h(component, data, children)
+  h是创建一个虚拟node的函数。
+  第一个参数可以是'html'或者'compnent-child'这些元素标签，也可以是一个组件对象{template: '<div>xxx</div>'}
+  第二个参数就是一些属性包含{ statCalss: xxx, on: xxx,  }
+  第三个参数是children 如果是一个组件children就是空，如果是一个元素children就是一个数组
+
+
+*/
+
 export default {
   name: 'RouterView',
   functional: true,
@@ -11,7 +29,7 @@ export default {
     }
   },
   render (_, { props, children, parent, data }) {
-    debugger
+    // debugger
     // used by devtools to display a router-view badge
     data.routerView = true
 
@@ -42,7 +60,7 @@ export default {
     if (inactive) {
       const cachedData = cache[name]
       const cachedComponent = cachedData && cachedData.component
-      if (cachedComponent) {
+      if (cachedComponent) {``
         // #2301
         // pass props
         if (cachedData.configProps) {

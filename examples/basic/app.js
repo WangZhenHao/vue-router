@@ -81,7 +81,6 @@ const vueInstance = new Vue({
       <pre id="hash">{{ $route.hash }}</pre>
       <router-view class="view"></router-view>
       <hr />
-      <router-view class="view"></router-view>
     </div>
   `,
 
