@@ -18,7 +18,7 @@ export function install (Vue) {
     3-1： 为Vue.prototype添加一个.$route属性，该值只会返回this._routerRoot._route
     
     4: 分别添加全局组件router-view, router-link
-    
+
   */
 
   if (install.installed && _Vue === Vue) return

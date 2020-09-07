@@ -41,6 +41,7 @@ export class History {
   +setupListeners: Function
 
   constructor (router: Router, base: ?string) {
+    // debugger
     this.router = router
     this.base = normalizeBase(base)
     // start with a route object that stands for "nowhere"
@@ -77,6 +78,7 @@ export class History {
     onComplete?: Function,
     onAbort?: Function
   ) {
+    // debugger
     const route = this.router.match(location, this.current)
     this.confirmTransition(
       route,

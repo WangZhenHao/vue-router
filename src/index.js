@@ -33,7 +33,13 @@ export default class VueRouter {
   resolveHooks: Array<?NavigationGuard>;
   afterHooks: Array<?AfterNavigationHook>;
 
+  /**
+  options: 
+  base： 表示跳转之前需要带上的路径，通一个域名下存放多个单页面项目非常有用
+  
+  */
   constructor (options: RouterOptions = {}) {
+    // debugger
     this.app = null
     this.apps = []
     this.options = options
@@ -230,6 +236,7 @@ export default class VueRouter {
       append,
       this
     )
+    // debugger
     const route = this.match(location, current)
     const fullPath = route.redirectedFrom || route.fullPath
     const base = this.history.base

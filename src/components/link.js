@@ -51,12 +51,13 @@ export default {
     */
     const router = this.$router
     const current = this.$route
+    
     const { location, route, href } = router.resolve(
       this.to,
       current,
       this.append
     )
-
+    // debugger
     const classes = {}
     const globalActiveClass = router.options.linkActiveClass
     const globalExactActiveClass = router.options.linkExactActiveClass
@@ -84,13 +85,17 @@ export default {
       : isIncludedRoute(current, compareTarget)
 
     const ariaCurrentValue = classes[exactActiveClass] ? this.ariaCurrentValue : null
-
+    // debugger
+    console.log(router, current)
     const handler = e => {
-      // debugger
+      /**
+        点击跳转的时候，location是一个闭包，保存着当初始化render函数时候，执行router.resolve方法返回的一个变量一个变量
+      */
       if (guardEvent(e)) {
         if (this.replace) {
           router.replace(location, noop)
         } else {
+          // debugger
           router.push(location, noop)
         }
       }
