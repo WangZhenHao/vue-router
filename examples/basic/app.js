@@ -32,7 +32,13 @@ Vue.use(VueRouter)
 
 // 2. Define route components
 const Home = { template: '<div>home</div>' }
-const Foo = { template: '<div>foo</div>' }
+const Foo = { 
+  template: '<div>foo</div>',
+  beforeRouteEnter (to, from, next) {
+    console.log(to, from)
+    next()
+  }
+}
 const Bar = { template: '<div>bar</div>' }
 const Unicode = { template: '<div>unicode</div>' }
 
@@ -59,7 +65,7 @@ const vueInstance = new Vue({
       <router-link tag="div" to="/foo">myFoo</router-link>
       <h1>Basic</h1>
       <ul>
-        <li><router-link to="/" target="_blank">/</router-link></li>
+        <li><router-link to="/">/</router-link></li>
         <li><router-link to="/foo">/foo</router-link></li>
         <li><router-link to="/bar">/bar</router-link></li>
         <router-link tag="li" to="/bar" :event="['mousedown', 'touchstart']">

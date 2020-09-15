@@ -23,7 +23,6 @@ export const supportsPushState =
   })()
 
 export function pushState (url?: string, replace?: boolean) {
-
   saveScrollPosition()
   // try...catch the pushState call to get around Safari
   // DOM Exception 18 where it limits to 100 pushState calls
@@ -35,7 +34,7 @@ export function pushState (url?: string, replace?: boolean) {
       stateCopy.key = getStateKey()
       history.replaceState(stateCopy, '', url)
     } else {
-      debugger
+      // debugger
       var skey = genStateKey()
       var key = setStateKey(skey)
       history.pushState({ key: key }, '', url)

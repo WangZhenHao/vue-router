@@ -18,7 +18,11 @@ export function install (Vue) {
     3-1： 为Vue.prototype添加一个.$route属性，该值只会返回this._routerRoot._route
     
     4: 分别添加全局组件router-view, router-link
-
+    
+    5：在beforeCreate生命周期定义了用defineReactive函数添加响应式属性_route
+    5-1：在router-view的render函数那里触发了get函数const route = parent.$route;
+    搜集到了该渲染watch,每次路由发生改变的时候，就会执行router-view的render函数
+    
   */
 
   if (install.installed && _Vue === Vue) return
